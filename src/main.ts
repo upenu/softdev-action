@@ -26,7 +26,7 @@ async function run(): Promise<void> {
 
   var i = 0;
   //while (true) {
-    var x = await gsheet.getData({});
+    var x = await gsheet.getData({minCol: 1, minRow: 1, maxCol: 10, maxRow: 10});
     console.log(x);
   //}
 }
