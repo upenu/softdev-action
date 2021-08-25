@@ -8,6 +8,9 @@ inputs:
   spreadsheetId:
     description: 'The id of the spreadsheet to use'
     required: true
+  worksheetTitle:
+    description: 'The title of the worksheet to use'
+    required: true
 outputs:
   results:
     description: 'The results of all commands as an array'
