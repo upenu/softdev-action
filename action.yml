@@ -1,11 +1,16 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'softdev-action'
+description: 'A GitHub Action to track weekly pushes.'
+author: 'UPE SoftDev'
+branding:
+  icon: user-check
+  color: green
 inputs:
-  milliseconds: # change this
+  spreadsheetId:
+    description: 'The id of the spreadsheet to use'
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  outputs:
+  results:
+    description: 'The results of all commands as an array'
 runs:
   using: 'node12'
   main: 'dist/index.js'
