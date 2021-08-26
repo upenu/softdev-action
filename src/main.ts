@@ -1,5 +1,6 @@
 import * as core from '@actions/core'
 import GoogleSheet from 'google-sheet-cli/lib/lib/google-sheet'
+import {GoogleSheetCli} from 'google-sheet-cli/lib/lib/google-sheet'
 import { runInThisContext } from 'vm';
 
 async function run(): Promise<void> {
@@ -72,7 +73,7 @@ async function run(): Promise<void> {
   });
 
   await gsheet.appendData([['=HYPERLINK(\"' +  'https://github.com/' + repository + '/commit/' + sha + '\", \"✅\")']], 
-    {minCol: weekIndex+1, minRow: studentIndex + 1, maxCol: weekIndex+1, maxRow: studentIndex+1})
+    {minCol: weekIndex+1, minRow: studentIndex + 1, maxCol: weekIndex+1, maxRow: studentIndex+1, valueInputOption: GoogleSheetCli.ValueInputOption.USER_ENTERED})
 }
 
 run()
