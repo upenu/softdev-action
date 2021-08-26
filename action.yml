@@ -11,6 +11,15 @@ inputs:
   worksheetTitle:
     description: 'The title of the worksheet to use'
     required: true
+  actor:
+    description: 'The user who committed'
+    required: true
+  repository:
+    description: 'The github repository being committed to'
+    required: true
+  sha:
+    description: 'The sha of the commit'
+    required: true
 outputs:
   results:
     description: 'The results of all commands as an array'
