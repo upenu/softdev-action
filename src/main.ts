@@ -44,8 +44,9 @@ async function run(): Promise<void> {
   var weekIndex = 1;
 
   for (; studentIndex < 100; studentIndex++) {
-    if (students.rawData.length < studentIndex || students.rawData[studentIndex].length <= 1 || students.rawData[studentIndex][0] == '') {
+    if (students.rawData.length <= studentIndex || students.rawData[studentIndex].length < 1 || students.rawData[studentIndex][0] == '') {
       await gsheet.appendData([[student]], {minCol: 1, minRow: studentIndex+1, maxCol: 1, maxRow: studentIndex+1})
+      break;
     }
     if (students.rawData[studentIndex][0] == student) {
       break;
@@ -55,6 +56,7 @@ async function run(): Promise<void> {
   for (; weekIndex < 100; weekIndex++) {
     if (weeks.rawData.length < 1 || weeks.rawData[0].length <= weekIndex || weeks.rawData[0][weekIndex] == '') {
       await gsheet.appendData([[week]], {minCol: weekIndex+1, minRow: 1, maxCol: weekIndex+1, maxRow: 1})
+      break;
     }
     if (weeks.rawData[0][weekIndex] == week) {
       break;
@@ -68,8 +70,6 @@ async function run(): Promise<void> {
   const sha: string = core.getInput('sha', { // GITHUB_SHA
     required: true,
   });
-
-  // 'https://github.com/' + GITHUB_REPOSITORY + '/commit/' + GITHUB_SHA
 
   await gsheet.appendData([['=HYPERLINK(' +  'https://github.com/' + repository + '/commit/' + sha + ', ✅)']], 
     {minCol: weekIndex+1, minRow: studentIndex + 1, maxCol: weekIndex+1, maxRow: studentIndex+1})
