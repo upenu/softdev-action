@@ -1,5 +1,6 @@
 import * as core from '@actions/core'
 import GoogleSheet from 'google-sheet-cli/lib/lib/google-sheet'
+import { runInThisContext } from 'vm';
 
 async function run(): Promise<void> {
   const spreadsheetId: string = core.getInput('spreadsheetId', {
@@ -35,6 +36,9 @@ async function run(): Promise<void> {
 
   var students = await gsheet.getData({minCol: 1, minRow: 1, maxCol: 1, maxRow: 100});
   var weeks = await gsheet.getData({minCol: 1, minRow: 1, maxCol: 100, maxRow: 1});
+  
+  console.log(students)
+  console.log(weeks)
   
   var studentIndex = 1;
   var weekIndex = 1;
