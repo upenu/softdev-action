@@ -10,6 +10,9 @@ jobs:
         with:
           spreadsheetId: 1G1js6wp_h14deErOgZdd05Z1J6fzz-oXakubSbdttng
           worksheetTitle: Sheet1
+          actor: ${{ github.actor }}
+          repository: ${{ github.repository }}
+          sha: ${{ github.sha }}
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
           GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
