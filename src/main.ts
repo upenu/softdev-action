@@ -72,7 +72,7 @@ async function run(): Promise<void> {
     required: true,
   });
 
-  await gsheet.appendData([['=HYPERLINK(\"' +  'https://github.com/' + repository + '/commit/' + sha + '\", \"✅\")']], 
+  await gsheet.updateData([['=HYPERLINK(\"' +  'https://github.com/' + repository + '/commit/' + sha + '\", \"✅\")']], 
     {minCol: weekIndex+1, minRow: studentIndex + 1, maxCol: weekIndex+1, maxRow: studentIndex+1, valueInputOption: GoogleSheetCli.ValueInputOption.USER_ENTERED})
 }
 
